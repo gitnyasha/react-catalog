@@ -1,35 +1,33 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../actions';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-class ProductList extends React.Component {
-    componentDidMount() {
-        this.props.fetchProducts();
+import { fetchProducts } from '../actions'
+import { Product } from '../components/Product'
+
+const ProductList = ({ dispatch, loading, products, hasErrors }) => {
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
+
+    // Show loading, error, or success state
+    const renderProducts = () => {
+        if (loading) return <p>Loading products...</p>
+        if (hasErrors) return <p>Unable to display products.</p>
+        return products.map((product) => <Product key={product.id} product={product} />)
     }
 
-    renderList() {
-        return this.props.products.map((product) => {
-            return (
-                <div className="item" key={product.id}>
-                    <i className="large middle aligned icon user" />
-                    <div className="content">
-                        <div className="description">
-                            <h2>{product.title}</h2>
-                            <p>{product.description}</p>
-                        </div>
-                    </div>
-                </div>
-            );
-        });
-    }
-
-    render() {
-        return <div className="ui relaxed divided list">{this.renderList()}</div>;
-    }
+    return (
+        <section>
+            <h1>Products</h1>
+            {renderProducts()}
+        </section>
+    )
 }
 
-const mapStateToProps = (state) => {
-    return { products: state.products };
-}
+const mapStateToProps = (state) => ({
+    loading: state.products.loading,
+    products: state.products.products,
+    hasErrors: state.products.hasErrors,
+})
 
-export default connect(mapStateToProps, { fetchProducts })(ProductList);
+export default connect(mapStateToProps)(ProductList)
