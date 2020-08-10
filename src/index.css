@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.heading {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  text-align: center;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 30%;
+  margin: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+  .card {
+    width: 30%;
+    margin: 20px;
+  }
+ }
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+  .card {
+    width: 30%;
+    margin: 20px;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 300px;
+  }
+ }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .list {
+    display: block;
+  }
+  
+  .card {
+    width: 100%;
+    margin: 20px 0px;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 300px;
+  }
+ }

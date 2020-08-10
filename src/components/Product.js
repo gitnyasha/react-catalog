@@ -1,9 +1,11 @@
 import React from 'react'
 
 export const Product = ({ product }) => (
-    <article className="post-excerpt">
-        <h2>{product.title}</h2>
-        <p>{product.description.substring(0, 100)}</p>
-        <p>{product.image["url"]}</p>
-    </article>
-)
+    <div className="card">
+        <img src={product.image["url"]} />
+        <div className="container">
+            <h4>{product.title}</h4>
+            <p>{product.description.substring(0, 100)}</p>
+        </div>
+    </div>
+);

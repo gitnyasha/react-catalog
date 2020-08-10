@@ -9,7 +9,6 @@ const ProductList = ({ dispatch, loading, products, hasErrors }) => {
         dispatch(fetchProducts())
     }, [dispatch])
 
-    // Show loading, error, or success state
     const renderProducts = () => {
         if (loading) return <p>Loading products...</p>
         if (hasErrors) return <p>Unable to display products.</p>
@@ -17,10 +16,12 @@ const ProductList = ({ dispatch, loading, products, hasErrors }) => {
     }
 
     return (
-        <section>
-            <h1>Products</h1>
-            {renderProducts()}
-        </section>
+        <div>
+            <h1 className="heading">Products</h1>
+            <div className="list">
+                {renderProducts()}
+            </div>
+        </div>
     )
 }
 

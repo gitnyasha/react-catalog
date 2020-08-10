@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import ProductList from '../containers/ProductList';
 import Dashboard from '../containers/Dashboard';
+import ShowProduct from '../containers/ShowProduct';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/products" component={ProductList} />
+        <Route exact path="/products/:id" component={ShowProduct} />
         <Redirect to="/" />
       </Switch>
     </Router>
